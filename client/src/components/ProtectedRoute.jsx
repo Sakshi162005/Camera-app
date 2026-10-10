@@ -7,7 +7,7 @@ export default function ProtectedRoute({ roles }) {
   const location = useLocation();
 
   if (loading) return <p className="center">Loading…</p>;
-  if (!user) return <Navigate to="/login" state={{ from: location }} replace />;
+  if (!user) return <Navigate to={location.pathname === '/' ? '/landing' : '/login'} state={{ from: location }} replace />;
   if (roles && !roles.includes(user.role)) {
     return (
       <div className="card">
