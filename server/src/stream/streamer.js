@@ -6,7 +6,7 @@ import { config } from '../config.js';
 function inputArgs(camera) {
   switch (camera.type) {
     case 'rtsp':
-      return ['-rtsp_transport', 'tcp', '-stimeout', '5000000', '-i', camera.source];
+      return ['-rtsp_transport', 'tcp', '-timeout', '5000000', '-i', camera.source];
     case 'dshow': // Windows webcam, e.g. "video=Integrated Camera"
       return ['-f', 'dshow', '-i', camera.source];
     case 'v4l2': // Linux webcam, e.g. "/dev/video0"

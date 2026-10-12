@@ -3,7 +3,8 @@ import axios from 'axios';
 export const TOKEN_KEY = 'cam_token';
 
 // Leave API_URL empty in dev so requests route through the Vite proxy (/api, /ws) without CORS
-const API_URL = import.meta.env.VITE_API_URL || '';
+const rawApiUrl = import.meta.env.VITE_API_URL || '';
+const API_URL = rawApiUrl.replace(/\/+$/, '');
 
 export const api = axios.create({
   baseURL: `${API_URL}/api`,
