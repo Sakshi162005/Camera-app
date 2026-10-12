@@ -2,7 +2,8 @@ import axios from 'axios';
 
 export const TOKEN_KEY = 'cam_token';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+// Leave API_URL empty in dev so requests route through the Vite proxy (/api, /ws) without CORS
+const API_URL = import.meta.env.VITE_API_URL || '';
 
 export const api = axios.create({
   baseURL: `${API_URL}/api`,
@@ -32,7 +33,9 @@ export const errorMessage = (err) =>
 
 // Build the WebSocket URL for a camera, carrying the JWT as a query param.
 export function streamUrl(cameraId) {
-  const wsBase = API_URL.replace(/^http/, 'ws');
+  const wsBase = API_URL
+    ? API_URL.replace(/^http/, 'ws')
+    : `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.host}`;
   const token = localStorage.getItem(TOKEN_KEY) || '';
 
   return `${wsBase}/ws/stream/${encodeURIComponent(cameraId)}?token=${encodeURIComponent(token)}`;

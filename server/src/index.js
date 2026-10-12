@@ -12,7 +12,11 @@ import { attachWebSocketServer } from './stream/wsServer.js';
 import { streamManager } from './stream/streamer.js';
 
 const app = express();
-app.use(cors({ origin: config.clientOrigin }));
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 app.use(express.json());
 
 app.get('/api/health', async (_req, res) => {
