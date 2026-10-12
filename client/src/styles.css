@@ -1693,14 +1693,47 @@ label > input, label > select { color: var(--cam-text); }
 @media (max-width: 860px) {
   .only-mobile { display: inline-grid; }
   .hero-nav-left { display: none; }
-  .mobile-menu-toggle { display: inline-grid; }
+  .mobile-menu-toggle { display: none; }
   .topnav span { display: none; }
   .who-text { display: none; }
 
   .hero-navbar {
-    padding: 1.2rem 1.5rem;
-    grid-template-columns: auto 1fr auto;
-    gap: 1rem;
+    padding: 0.85rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .hero-brand {
+    font-size: clamp(1rem, 3.8vw, 1.15rem);
+    letter-spacing: 0.12em;
+    flex-shrink: 0;
+  }
+
+  .hero-nav-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .nav-icon-btn {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  .hero-auth-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.38rem 0.72rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
   
   .hero-stage {

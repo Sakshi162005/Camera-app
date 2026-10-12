@@ -24,7 +24,7 @@ function inputArgs(camera) {
 function buildArgs(camera) {
   return [
     '-hide_banner',
-    '-loglevel', 'warning',
+    '-loglevel', 'verbose',
     ...inputArgs(camera),
     '-f', 'mpegts',
     '-codec:v', 'mpeg1video', // the codec JSMpeg decodes in the browser
